@@ -1,7 +1,3 @@
-import sys
-
-
-
 def solution(area):
     area = int(area)
     factors = [1, area]
@@ -15,7 +11,6 @@ def solution(area):
         elif area%i == 0:
             factors[0] = i
             factors[1] = area/i
-            print(factors)
         i += 1
             
         
@@ -24,7 +19,7 @@ def solution(area):
     print(factors)
     area_remain = area 
     dim_remain = factors #dimensions of area remaining
-    output_str = ''
+    output_list = []
     
     while area_remain > 0:
     
@@ -33,14 +28,13 @@ def solution(area):
             area_remain = 0
         else:
             sqr = factors[0]**2
-            output_str += str(int(sqr)) + ','
+            output_list.append(int(sqr))
             factors[1] = factors[1]-factors[0]
             if factors[1] < factors[0]:
                 temp = factors[0]
                 factors[0] = factors[1]
                 factors[1] = temp
             area_remain -= sqr
-    return(output_str[:-1])
+    return(output_list)
 
-hm = sys.argv[1]
-print(solution(hm))
+print(solution(12))
